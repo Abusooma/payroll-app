@@ -1,0 +1,283 @@
+{% extends 'base_landing/main.html' %} {% block title %} Revolutionnez la paie
+{% endblock %} {% load static %} {% block content %}
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-4 mb-4 animated-text">
+          Révolutionnez votre gestion de paie avec EasyPay
+        </h1>
+        <p class="lead mb-5 animated-text">
+          Automatisez, simplifiez et sécurisez vos processus de paie. Gagnez du
+          temps et évitez les erreurs coûteuses.
+        </p>
+        <a
+          href="{% url 'sign_up' %}"
+          class="btn btn-light btn-lg me-3 animated-button"
+          >Démarrer l'essai gratuit</a
+        >
+        <a href="#demo" class="btn btn-outline-light btn-lg animated-button"
+          >Voir la démo</a
+        >
+      </div>
+      <div class="col-lg-6">
+        <img
+          src="{% static 'img/demo.png' %}"
+          alt="EasyPay Dashboard"
+          class="img-fluid rounded shadow animated-image"
+        />
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="features" class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title">Fonctionnalités clés</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 feature-card">
+          <i class="fas fa-calculator feature-icon mb-3"></i>
+          <h3>Calcul automatique</h3>
+          <p>
+            Calculs précis selon les conventions collectives et la situation de
+            chaque employé.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 feature-card">
+          <i class="fas fa-file-invoice feature-icon mb-3"></i>
+          <h3>Fiches de paie personnalisées</h3>
+          <p>
+            Générez des fiches de paie détaillées et conformes à la législation
+            en vigueur.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 feature-card">
+          <i class="fas fa-cloud feature-icon mb-3"></i>
+          <h3>Solution cloud</h3>
+          <p>
+            Accédez à vos données en toute sécurité, n'importe où et n'importe
+            quand.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benefits" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center section-title">Pourquoi choisir EasyPay ?</h2>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="benefit-card">
+          <h3>
+            <i class="fas fa-clock text-primary me-2"></i> Gain de temps
+            considérable
+          </h3>
+          <p>
+            Réduisez jusqu'à 70% le temps consacré à la gestion de la paie.
+            Concentrez-vous sur ce qui compte vraiment pour votre entreprise.
+          </p>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="benefit-card">
+          <h3>
+            <i class="fas fa-shield-alt text-primary me-2"></i> Conformité
+            garantie
+          </h3>
+          <p>
+            Nos mises à jour régulières assurent une conformité constante avec
+            les dernières réglementations.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing" class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title">Nos Tarifs</h2>
+    <div class="row">
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 pricing-card">
+          <div class="card-body">
+            <h3 class="card-title text-center">Pack Gratuit</h3>
+            <p class="text-center text-muted">Essai de 14 Jours</p>
+            <h4 class="text-center mb-4">0 Dinar</h4>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Calcul des
+                Salaires de Base
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Gestion de Base
+                des Employés
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Gestion de Base
+                des Congés
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Rapports Simples
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Support de Base
+              </li>
+            </ul>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-outline-primary"
+                >Essayer Gratuitement</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 pricing-card premium">
+          <div class="card-body">
+            <h3 class="card-title text-center">Pack Payant</h3>
+            <p class="text-center text-muted">Abonnement Annuel</p>
+            <h4 class="text-center mb-4">500 Dinars / an</h4>
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Calcul Avancé des
+                Salaires
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Gestion Complète
+                des Employés
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Gestion Avancée
+                des Congés
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Rapports Avancés
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Intégrations de
+                Base
+              </li>
+              <li>
+                <i class="fas fa-check text-success me-2"></i>Support Premium
+              </li>
+            </ul>
+            <div class="text-center mt-4">
+              <a href="#" class="btn btn-primary">Souscrire</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="testimonials" class="py-5 testimonial">
+  <div class="container">
+    <h2 class="text-center section-title">Témoignages</h2>
+    <div class="row">
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 testimonial-card">
+          <div class="image-container testimonial-image">
+            <img
+              src="{% static 'img/testi1.jpg' %}"
+              alt="Client"
+              class="img-fluid rounded-circle mx-auto"
+            />
+          </div>
+          <h4>Marie Dupont</h4>
+          <p class="text-muted">
+            "EasyPay a simplifié notre processus de paie de manière incroyable.
+            C'est un outil indispensable pour notre entreprise."
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 testimonial-card">
+          <div class="image-container testimonial-image">
+            <img
+              src="{% static 'img/testi2.jpg' %}"
+              alt="Client"
+              class="img-fluid rounded-circle mx-auto mb-3"
+            />
+          </div>
+          <h4>Jean-Pierre Martin</h4>
+          <p class="text-muted">
+            "L'interface est intuitive et les fonctionnalités sont puissantes.
+            Je recommande fortement EasyPay."
+          </p>
+        </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 text-center p-4 testimonial-card">
+          <div class="image-container testimonial-image">
+            <img
+              src="{% static 'img/testi3.jpg' %}"
+              alt="Client"
+              class="img-fluid rounded-circle mx-auto mb-3"
+            />
+          </div>
+          <h4>Isabelle Leroy</h4>
+          <p class="text-muted">
+            "Depuis que nous utilisons EasyPay, nous avons éliminé les erreurs
+            de paie et gagné beaucoup de temps."
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="py-5">
+  <div class="container">
+    <h2 class="text-center section-title">Contactez-nous</h2>
+    <p class="text-center mb-5">
+      Pour plus d'informations ou pour obtenir une démonstration, veuillez nous
+      contacter.
+    </p>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <form>
+          <div class="mb-3">
+            <label for="name" class="form-label">Nom complet</label>
+            <input
+              type="text"
+              class="form-control"
+              id="name"
+              placeholder="Votre nom"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="Votre e-mail"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              class="form-control"
+              id="message"
+              rows="5"
+              placeholder="Votre message"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

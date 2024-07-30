@@ -1,0 +1,110 @@
+{% extends 'base_landing/main.html' %} {% load static %} {% block title %} Sign
+up {% endblock %} {% block content %}
+<div class="register-page">
+  <div class="register-container">
+    <div class="register-form">
+      <h2 class="register-title animated-element" style="animation-delay: 0.1s">
+        <i class="fas fa-user-plus me-2"></i>Rejoignez EasyPay
+      </h2>
+      <form>
+        <div
+          class="form-floating mb-3 animated-element"
+          style="animation-delay: 0.2s"
+        >
+          <input
+            type="text"
+            class="form-control"
+            id="companyName"
+            placeholder="Nom de la société"
+            required
+          />
+          <label for="companyName"
+            ><i class="fas fa-building me-2"></i>Nom de la société</label
+          >
+        </div>
+        <div
+          class="form-floating mb-3 animated-element"
+          style="animation-delay: 0.3s"
+        >
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            placeholder="Email professionnel"
+            required
+          />
+          <label for="email"
+            ><i class="fas fa-envelope me-2"></i>Email professionnel</label
+          >
+        </div>
+        <div
+          class="form-floating mb-3 animated-element"
+          style="animation-delay: 0.4s"
+        >
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            placeholder="Mot de passe"
+            required
+          />
+          <label for="password"
+            ><i class="fas fa-lock me-2"></i>Mot de passe</label
+          >
+        </div>
+        <div
+          class="form-floating mb-4 animated-element"
+          style="animation-delay: 0.5s"
+        >
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Confirmer le mot de passe"
+            required
+          />
+          <label for="confirmPassword"
+            ><i class="fas fa-lock me-2"></i>Confirmer le mot de passe</label
+          >
+        </div>
+        <button
+          type="submit"
+          class="btn btn-register animated-element"
+          style="animation-delay: 0.6s"
+        >
+          <i class="fas fa-paper-plane me-2"></i>Créer mon compte
+        </button>
+      </form>
+      <div class="login-link animated-element" style="animation-delay: 0.7s">
+        Déjà un compte ?
+        <a href="{% url 'sign_in' %}"
+          ><i class="fas fa-sign-in-alt me-1"></i>Se connecter</a
+        >
+      </div>
+    </div>
+    <div class="register-image">
+      <div class="register-image-text">
+        <h3 class="animated-element" style="animation-delay: 0.8s">
+          <i class="fas fa-calculator me-2"></i>Simplifiez votre gestion de paie
+        </h3>
+        <p class="animated-element" style="animation-delay: 0.9s">
+          Rejoignez des milliers d'entreprises qui font confiance à EasyPay pour
+          leur gestion de paie.
+        </p>
+        <ul class="features-list animated-element" style="animation-delay: 1s">
+          <li>
+            <i class="fas fa-check-circle"></i>Calculs automatiques précis
+          </li>
+          <li>
+            <i class="fas fa-shield-alt"></i>Sécurité des données garantie
+          </li>
+          <li><i class="fas fa-clock"></i>Gain de temps considérable</li>
+          <li>
+            <i class="fas fa-sync"></i>Mises à jour réglementaires automatiques
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

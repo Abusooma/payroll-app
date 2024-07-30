@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyPay | {% block title %}{% endblock %}</title>
+    <!-- Polices d'écriture -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+  </head>
+  <body>
+    {% include 'base_dashboard/sidebar.html' %}
+
+    <div class="content">
+      {% include 'base_dashboard/navbar.html' %} 
+      {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script>
+      // Toggle sidebar
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebarToggle = document.getElementById("sidebarToggle");
+        const sidebar = document.querySelector(".sidebar");
+        const content = document.querySelector(".content");
+
+        sidebarToggle.addEventListener("click", function () {
+          sidebar.classList.toggle("hidden");
+          content.classList.toggle("expanded");
+        });
+      });
+
+      // Toggle submenu
+      document.querySelectorAll(".sidebar-menu > li > a").forEach((item) => {
+        item.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.target.closest("li").classList.toggle("active");
+        });
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var dropdownElementList = [].slice.call(
+          document.querySelectorAll(".dropdown-toggle")
+        );
+        dropdownElementList.map(function (dropdownToggleEl) {
+          return new bootstrap.Dropdown(dropdownToggleEl);
+        });
+
+        // Gestion du sous-menu des paramètres
+        var parametresDropdown = document.getElementById("parametresDropdown");
+        if (parametresDropdown) {
+          parametresDropdown.addEventListener("click", function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+            var dropdownSubmenu = this.nextElementSibling;
+            dropdownSubmenu.classList.toggle("show");
+          });
+        }
+
+        // Fermer le sous-menu lorsqu'on clique en dehors
+        document.addEventListener("click", function (event) {
+          var dropdownMenus = document.querySelectorAll(
+            ".dropdown-submenu.show"
+          );
+          dropdownMenus.forEach(function (menu) {
+            if (!menu.contains(event.target)) {
+              menu.classList.remove("show");
+            }
+          });
+        });
+      });
+    </script>
+    {% block extra_script %}{% endblock %}
+  </body>
+</html>

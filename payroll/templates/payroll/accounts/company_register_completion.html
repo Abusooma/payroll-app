@@ -1,0 +1,224 @@
+{% extends 'base_landing/main.html' %} 
+
+{% load static %} 
+
+{% block title %} Completer le profile {% endblock %} 
+{% block content %}
+<div class="completion-body">
+  <div class="completion-container animate-in">
+    <div class="completion-header">
+      <h1><i class="fas fa-building me-2"></i>Vous y êtes presque !</h1>
+      <p class="lead">
+        Finalisez votre inscription en complétant les informations de votre
+        société.
+      </p>
+    </div>
+    <form id="companyInfoForm">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="country"
+              placeholder="Pays"
+              required
+            />
+            <label for="country"><i class="fas fa-globe me-2"></i>Pays</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="city"
+              placeholder="Ville"
+              required
+            />
+            <label for="city"><i class="fas fa-city me-2"></i>Ville</label>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="address"
+              placeholder="Adresse"
+              required
+            />
+            <label for="address"
+              ><i class="fas fa-map-marker-alt me-2"></i>Adresse</label
+            >
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="postalCode"
+              placeholder="Code postal"
+              required
+            />
+            <label for="postalCode"
+              ><i class="fas fa-mailbox me-2"></i>Code postal</label
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="collectiveAgreement"
+              placeholder="Convention collective"
+              required
+            />
+            <label for="collectiveAgreement"
+              ><i class="fas fa-file-contract me-2"></i>Convention
+              collective</label
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="operationCode"
+              placeholder="Code d'exploitation"
+              required
+            />
+            <label for="operationCode"
+              ><i class="fas fa-barcode me-2"></i>Code d'exploitation</label
+            >
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="cnss"
+              placeholder="CNSS"
+              required
+            />
+            <label for="cnss"><i class="fas fa-shield-alt me-2"></i>CNSS</label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-floating">
+            <input
+              type="text"
+              class="form-control"
+              id="fiscalId"
+              placeholder="Matricule fiscal"
+              required
+            />
+            <label for="fiscalId"
+              ><i class="fas fa-id-card me-2"></i>Matricule fiscal</label
+            >
+          </div>
+        </div>
+        <div class="col-12">
+          <label class="form-label"
+            ><i class="fas fa-image me-2"></i>Logo de la société</label
+          >
+          <div class="image-upload-container" id="imageUploadContainer">
+            <i class="fas fa-cloud-upload-alt image-upload-icon"></i>
+            <p>Cliquez ou glissez-déposez votre logo ici</p>
+            <input
+              type="file"
+              id="companyLogo"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
+          <img id="previewImage" src="#" alt="Aperçu du logo" />
+        </div>
+        <div class="col-12">
+          <div class="info-message">
+            <i class="fas fa-info-circle"></i>
+            <p class="mb-0">
+              Vous pourrez toujours modifier ces informations dans les
+              paramètres de votre société.
+            </p>
+          </div>
+        </div>
+        <div class="col-12 text-center mt-4">
+          <button type="submit" class="btn btn-primary btn-lg">
+            <i class="fas fa-check-circle me-2"></i>Finaliser l'inscription
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const imageUploadContainer = document.getElementById(
+          "imageUploadContainer"
+        );
+        const companyLogo = document.getElementById("companyLogo");
+        const previewImage = document.getElementById("previewImage");
+        const companyInfoForm = document.getElementById("companyInfoForm");
+
+        imageUploadContainer.addEventListener("click", function () {
+          companyLogo.click();
+        });
+
+        imageUploadContainer.addEventListener("dragover", function (e) {
+          e.preventDefault();
+          this.style.backgroundColor = "rgba(44, 116, 179, 0.2)";
+        });
+
+        imageUploadContainer.addEventListener("dragleave", function (e) {
+          e.preventDefault();
+          this.style.backgroundColor = "";
+        });
+
+        imageUploadContainer.addEventListener("drop", function (e) {
+          e.preventDefault();
+          this.style.backgroundColor = "";
+          if (e.dataTransfer.files.length > 0) {
+            handleFile(e.dataTransfer.files[0]);
+          }
+        });
+
+        companyLogo.addEventListener("change", function (e) {
+          if (e.target.files.length > 0) {
+            handleFile(e.target.files[0]);
+          }
+        });
+
+        function handleFile(file) {
+          if (file.type.startsWith("image/")) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              previewImage.src = e.target.result;
+              previewImage.style.display = "block";
+              previewImage.classList.add("animate-in");
+            };
+            reader.readAsDataURL(file);
+          } else {
+            alert("Veuillez sélectionner une image valide.");
+          }
+        }
+
+        companyInfoForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+          // Ici, vous pouvez ajouter la logique pour envoyer les données du formulaire à votre serveur
+          alert(
+            "Inscription finalisée avec succès ! Redirection vers le tableau de bord..."
+          );
+          // Redirection vers le tableau de bord (à remplacer par l'URL réelle)
+          // window.location.href = 'dashboard.html';
+        });
+      });
+    </script>
+{% endblock %}

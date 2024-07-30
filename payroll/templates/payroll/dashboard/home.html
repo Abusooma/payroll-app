@@ -1,0 +1,191 @@
+{% extends 'base_dashboard/main.html' %} 
+
+{% load static %} 
+
+{% block title %} dashboard {% endblock %} 
+
+{% block content %} 
+
+{% if new_company %}
+
+{% include 'base_dashboard/new_company.html' %} 
+
+{% else %}
+
+<div class="row">
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Nombre d'employés</h5>
+        <h2 class="card-text">150</h2>
+        <p class="card-text text-success">
+          <i class="fas fa-arrow-up me-2"></i>5% depuis le mois dernier
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Masse salariale</h5>
+        <h2 class="card-text">75 000 €</h2>
+        <p class="card-text text-danger">
+          <i class="fas fa-arrow-down me-2"></i>2% depuis le mois dernier
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Congés en cours</h5>
+        <h2 class="card-text">12</h2>
+        <p class="card-text text-info">
+          <i class="fas fa-equals me-2"></i>Stable depuis le mois dernier
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Heures supplémentaires</h5>
+        <h2 class="card-text">245h</h2>
+        <p class="card-text text-success">
+          <i class="fas fa-arrow-up me-2"></i>10% depuis le mois dernier
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Évolution de la masse salariale</h5>
+        <div class="chart-container">
+          <canvas id="salaryChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Répartition des employés</h5>
+        <div class="chart-container">
+          <canvas id="employeeChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Employés récemment ajoutés</h5>
+        <ul class="list-group">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Marie Dupont
+            <span class="badge bg-primary rounded-pill">Il y a 2 jours</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Jean Martin
+            <span class="badge bg-primary rounded-pill">Il y a 3 jours</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Sophie Lambert
+            <span class="badge bg-primary rounded-pill">Il y a 5 jours</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Prochains congés</h5>
+        <ul class="list-group">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Pierre Durand
+            <span class="badge bg-info rounded-pill">10-15 Août</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Lucie Moreau
+            <span class="badge bg-info rounded-pill">20-27 Août</span>
+          </li>
+          <li
+            class="list-group-item d-flex justify-content-between align-items-center"
+          >
+            Thomas Petit
+            <span class="badge bg-info rounded-pill">1-15 Septembre</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endif %}
+
+{% endblock %} 
+
+{% block extra_script %}
+<script>
+  // Salary Chart
+  var ctx = document.getElementById("salaryChart").getContext("2d");
+  var salaryChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: ["Jan", "Fév", "Mar", "Avr", "Mai", "Juin"],
+      datasets: [
+        {
+          label: "Masse salariale",
+          data: [65000, 67000, 70000, 69000, 72000, 75000],
+          borderColor: "rgb(75, 192, 192)",
+          tension: 0.1,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+
+  // Employee Chart
+  var ctx2 = document.getElementById("employeeChart").getContext("2d");
+  var employeeChart = new Chart(ctx2, {
+    type: "doughnut",
+    data: {
+      labels: ["CDI", "CDD", "Intérim", "Apprentis"],
+      datasets: [
+        {
+          data: [70, 15, 10, 5],
+          backgroundColor: [
+            "rgb(255, 99, 132)",
+            "rgb(54, 162, 235)",
+            "rgb(255, 205, 86)",
+            "rgb(75, 192, 192)",
+          ],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  });
+</script>
+{% endblock %}

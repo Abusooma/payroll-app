@@ -1,0 +1,80 @@
+{% extends 'base_dashboard/main.html' %}
+
+{% load static %}
+
+{% block title %} Profile de l'entreprise {% endblock %}
+
+{% block content %}
+
+<div class="profile-header">
+        <img
+          src="{% static 'img/logo_company.jpg' %}"
+          alt="Logo de l'entreprise"
+          class="profile-photo"
+        />
+        <h1 class="profile-name">ActuBuild</h1>
+        <a
+          class="edit-button text-decoration-none"
+          href="{% url 'edit_profile-company' %}"
+        >
+          <i class="fas fa-edit me-2"></i>Modifier le profil
+        </a>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="profile-card">
+            <h3 class="mb-4">
+              <i class="fas fa-info-circle me-2"></i>Informations générales
+            </h3>
+            <div class="info-group">
+              <div class="info-label">Pays</div>
+              <div class="info-value">France</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Ville</div>
+              <div class="info-value">Paris</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Adresse</div>
+              <div class="info-value">123 Rue de la Paix</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Code postal</div>
+              <div class="info-value">75000</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="profile-card">
+            <h3 class="mb-4">
+              <i class="fas fa-building me-2"></i>Informations légales
+            </h3>
+            <div class="info-group">
+              <div class="info-label">Convention collective</div>
+              <div class="info-value">
+                Convention collective nationale des bureaux d'études techniques
+              </div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">CNSS</div>
+              <div class="info-value">1234567890</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Code d'exploitation</div>
+              <div class="info-value">EXP123456</div>
+            </div>
+            <div class="info-group">
+              <div class="info-label">Matricule</div>
+              <div class="info-value">MAT987654</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-card mt-4">
+        <h3 class="mb-4"><i class="fas fa-envelope me-2"></i>Contact</h3>
+        <div class="info-group">
+          <div class="info-label">Adresse email</div>
+          <div class="info-value">contact@entreprise.com</div>
+        </div>
+      </div>
+{% endblock %}

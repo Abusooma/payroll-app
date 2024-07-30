@@ -1,0 +1,80 @@
+{% extends 'base_landing/main.html' %}
+{% load static %}
+
+{% block title %}Confirmation d'Email - EasyPay{% endblock %}
+
+{% block content %}
+<div class="confirmation-page">
+  <div class="confirmation-container">
+    <div class="animation-container">
+      <div class="envelope">
+        <div class="envelope-flap"></div>
+        <div class="letter">
+          <i class="fas fa-check"></i>
+        </div>
+      </div>
+      <div class="confetti"></div>
+    </div>
+    <div class="confirmation-content">
+      <h1 class="confirmation-title">Presque là !</h1>
+      <p class="confirmation-message">
+        Nous avons envoyé un e-mail magique à <strong>{{ email }}</strong>. 
+        Ouvrez-le pour débloquer votre compte EasyPay !
+      </p>
+      <div class="progress-tracker">
+        <div class="progress-step completed">
+          <div class="step-icon"><i class="fas fa-user-plus"></i></div>
+          <p>Inscription</p>
+        </div>
+        <div class="progress-step active">
+          <div class="step-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <p>Vérification</p>
+        </div>
+        <div class="progress-step">
+          <div class="step-icon"><i class="fas fa-chess-king"></i></div>
+          <p>Activation</p>
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button class="btn btn-confirmation btn-primary btn-glow">
+          <i class="fas fa-sync-alt"></i> Renvoyer l'e-mail
+        </button>
+        <button class="btn btn-confirmation btn-secondary">
+          <i class="fas fa-edit"></i> Modifier l'e-mail
+        </button>
+      </div>
+      <div class="help-portal">
+        <p>Besoin d'aide ? Explorez notre <a href="#" class="portal-link">portail d'assistance <i class="fas fa-external-link-alt"></i></a></p>
+      </div>
+    </div>
+  </div>
+  <div class="ambient-background"></div>
+</div>
+{% endblock %}
+
+{% block extra_script %}
+<script>
+  // Animation de l'enveloppe
+  document.addEventListener('DOMContentLoaded', (event) => {
+    setTimeout(() => {
+      document.querySelector('.envelope').classList.add('animate');
+    }, 500);
+  });
+
+  // Génération de confettis
+  function createConfetti() {
+    const confettiContainer = document.querySelector('.confetti');
+    for (let i = 0; i < 50; i++) {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti-piece');
+      confetti.style.setProperty('--angle', Math.random() * 360 + 'deg');
+      confetti.style.setProperty('--translateX', Math.random() * 100 - 50 + 'px');
+      confetti.style.setProperty('--translateY', Math.random() * 100 - 50 + 'px');
+      confettiContainer.appendChild(confetti);
+    }
+  }
+
+  // Lancer l'animation de confettis après l'animation de l'enveloppe
+  setTimeout(createConfetti, 2000);
+</script>
+{% endblock %}

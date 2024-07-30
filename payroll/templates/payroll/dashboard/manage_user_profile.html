@@ -1,0 +1,118 @@
+{% extends 'base_dashboard/main.html' %}
+
+{% load static %}
+
+{% block title %} Gestion compte utilisateur {% endblock %}
+
+{% block content %}
+   <!-- Contenu principal -->
+      <div class="container">
+        <h2 class="mb-4">Gestion du Profil Utilisateur</h2>
+
+        <!-- Modification des identifiants -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5>
+              <i class="fas fa-user-edit me-2"></i>Modification des Identifiants
+              de Connexion
+            </h5>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="email" class="form-label"
+                  >Nouvelle adresse email</label
+                >
+                <input type="email" class="form-control" id="email" />
+                <small class="form-text text-muted"
+                  >Laissez vide si vous ne souhaitez pas changer votre
+                  email.</small
+                >
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label"
+                  >Nouveau mot de passe</label
+                >
+                <input type="password" class="form-control" id="password" />
+                <small class="form-text text-muted"
+                  >Laissez vide si vous ne souhaitez pas changer votre mot de
+                  passe.</small
+                >
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label"
+                  >Confirmer le nouveau mot de passe</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="currentPassword" class="form-label"
+                  >Mot de passe actuel</label
+                >
+                <input
+                  type="password"
+                  class="form-control"
+                  id="currentPassword"
+                  required
+                />
+                <small class="form-text text-muted"
+                  >Requis pour confirmer les modifications.</small
+                >
+              </div>
+              <button type="submit" class="btn btn-primary">
+                Mettre à jour
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Authentification à deux facteurs -->
+        <div class="card mb-4">
+          <div class="card-header">
+            <h5>
+              <i class="fas fa-shield-alt me-2"></i>Authentification à Deux
+              Facteurs
+            </h5>
+          </div>
+          <div class="card-body">
+            <p>
+              Statut actuel : <span class="badge bg-warning">Désactivé</span>
+            </p>
+            <button class="btn btn-primary">
+              Activer l'authentification à deux facteurs
+            </button>
+          </div>
+        </div>
+
+        <!-- Réinitialisation du mot de passe -->
+        <div class="card">
+          <div class="card-header">
+            <h5>
+              <i class="fas fa-clock me-2"></i>Réinitialisation Périodique du
+              Mot de Passe
+            </h5>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="mb-3">
+                <label for="passwordResetPeriod" class="form-label"
+                  >Période de réinitialisation du mot de passe (en jours)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="passwordResetPeriod"
+                  min="30"
+                  value="90"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
+          </div>
+        </div>
+      </div>
+{% endblock %}

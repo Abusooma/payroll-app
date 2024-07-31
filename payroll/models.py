@@ -111,16 +111,16 @@ class ConventionCollective(models.Model):
 class CompanyProfile(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name='company_profile')
-    nom_entreprise = models.CharField(max_length=100)
-    pays = models.CharField(max_length=100)
-    ville = models.CharField(max_length=100)
-    addresse = models.TextField()
-    code_postal = models.CharField(max_length=20)
+    nom_entreprise = models.CharField(max_length=100, blank=True)
+    pays = models.CharField(max_length=100, blank=True)
+    ville = models.CharField(max_length=100, blank=True)
+    addresse = models.TextField(blank=True)
+    code_postal = models.CharField(max_length=20, blank=True)
     convention_collective = models.ForeignKey(
         ConventionCollective, on_delete=models.CASCADE, blank=True, null=True)
-    code_dexploitation = models.CharField(max_length=50)
-    cnss = models.CharField(max_length=50)
-    matricule_fiscale = models.CharField(max_length=50)
+    code_dexploitation = models.CharField(max_length=50, blank=True)
+    cnss = models.CharField(max_length=50, blank=True)
+    matricule_fiscale = models.CharField(max_length=50, blank=True)
     logo = models.ImageField(upload_to='company_logos/', blank=True, null=True)
     registration_complete = models.BooleanField(default=False)
 

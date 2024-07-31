@@ -341,6 +341,25 @@ body {
   color: var(--secondary-color);
 }
 
+
+.password-field {
+  position: relative;
+}
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #6c757d;
+  padding: 0;
+}
+.password-toggle:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 /* Register page specific styles */
 .register-page {
   background: linear-gradient(

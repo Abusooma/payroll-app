@@ -3,6 +3,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager, AbstractUser
 from django.core.exceptions import ValidationError
 
+
 # Contexte Manager du model utilisateur personalisé
 class CustomUserManager(UserManager):
     def _create_user(self, email, password, **extra_fields):
@@ -33,7 +34,6 @@ class CustomUserManager(UserManager):
 
 # Model utilisateur personalisé
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-
     USER_TYPE_CHOICES = (
         ('company', 'Entreprise'),
         ('employee', 'Employé'),
@@ -111,7 +111,7 @@ class ConventionCollective(models.Model):
 class CompanyProfile(models.Model):
     user = models.OneToOneField(
         CustomUser, on_delete=models.CASCADE, related_name='company_profile')
-    nom_entreprise = models.CharField(max_length=100, blank=True)
+    nom_entreprise = models.CharField(max_length=100)
     pays = models.CharField(max_length=100, blank=True)
     ville = models.CharField(max_length=100, blank=True)
     addresse = models.TextField(blank=True)

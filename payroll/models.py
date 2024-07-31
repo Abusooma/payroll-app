@@ -80,7 +80,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     def is_admin(self):
         return self.user_type == 'admin'
 
-    def verify_email(self):
+    def verify_email_is_ok(self):
         self.is_email_verified = True
         self.is_active = True
         self.save()

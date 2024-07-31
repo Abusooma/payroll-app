@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-%b_t=^n)-3=ml((r#ai&pdceq@*n$e5i5op-g#u!f#x@6azw7_
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -68,8 +66,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'PayrollSolution.wsgi.application'
+# Emailing settings
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_FROM = 'soumahaboubacarsopra@gmail.com'
+EMAIL_HOST_USER = 'soumahaboubacarsopra@gmail.com'
+EMAIL_HOST_PASSWORD = 'hpursgbeuychxqeh'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
+PASSWORD_RESET_TIMEOUT = 14400
+
+WSGI_APPLICATION = 'PayrollSolution.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -84,7 +92,6 @@ DATABASES = {
         'PORT': '5433'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -104,18 +111,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'fr-fr'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
@@ -130,6 +135,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
 
 AUTH_USER_MODEL = 'payroll.CustomUser'

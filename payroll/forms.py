@@ -1,6 +1,7 @@
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from .models import CustomUser, CompanyProfile
+from .utils import create_company_profile
 from django import forms
 
 
@@ -28,7 +29,7 @@ class CompanyRegistrationForm(forms.ModelForm):
             self.add_error('password', e)
 
         return cleaned_data
-    
+
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(self.cleaned_data["password"])
@@ -37,9 +38,6 @@ class CompanyRegistrationForm(forms.ModelForm):
 
         if commit:
             user.save()
-            CompanyProfile.objects.create(
-                user=user, 
-                nom_entreprise=self.cleaned_data['company_name']
-            )
-        
+            create_company_profile(user)
+
         return user

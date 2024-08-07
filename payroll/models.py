@@ -29,7 +29,7 @@ class CustomUserManager(UserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('Superuser must have is_superuser=True.')
 
-        return self._create_user(self, email, password, **extra_fields)
+        return self._create_user(email, password, **extra_fields)
 
 
 # Model utilisateur personalisé
@@ -125,7 +125,7 @@ class CompanyProfile(models.Model):
     registration_complete = models.BooleanField(default=False)
 
     def __str__(self):
-        return self.company_name
+        return self.nom_entreprise
 
     def complete_registration(self):
         self.registration_complete = False

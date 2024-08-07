@@ -1,161 +1,183 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>PayEas | {% block title %}{% endblock %}</title>
     <!-- Polices d'écriture -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+            rel="stylesheet"
     />
     <!-- Bootstrap CSS -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet"/>
     <!-- Font Awesome -->
-    <link href="{% static 'css/all.min.css' %}" rel="stylesheet" />
+    <link href="{% static 'css/all.min.css' %}" rel="stylesheet"/>
     <!-- CSS personnalisé -->
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light">
-      <div class="container">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"/>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
         <a class="navbar-brand" href="{% url 'home_landing' %}"
-          ><i class="fas fa-calculator me-2"></i>EasyPay</a
+        ><i class="fas fa-calculator me-2"></i>EasyPay</a
         >
         <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
         >
-          <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="#features">Fonctionnalités</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#benefits">Avantages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#pricing">Tarifs</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#testimonials">Témoignages</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link btn btn-primary text-white ms-2"
-                href="{% url 'sign_up' %}"
-                >Essai gratuit</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    {% block content %}{% endblock %}
-
-    <footer class="footer text-light py-5">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">EasyPay</h5>
-            <p class="mb-4">
-              Simplifiez et automatisez votre gestion de paie avec EasyPay.
-              Gagnez du temps et évitez les erreurs.
-            </p>
-            <div class="mt-4">
-              <a
-                href="#"
-                class="btn btn-outline-light btn-floating me-2"
-                aria-label="Facebook"
-              >
-                <i class="fab fa-facebook-f"></i>
-              </a>
-              <a
-                href="#"
-                class="btn btn-outline-light btn-floating me-2"
-                aria-label="Twitter"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              <a
-                href="#"
-                class="btn btn-outline-light btn-floating me-2"
-                aria-label="LinkedIn"
-              >
-                <i class="fab fa-linkedin-in"></i>
-              </a>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">Liens utiles</h5>
-            <ul class="list-unstyled">
-              <li class="mb-2">
-                <a href="#" class="text-light text-decoration-none hover-effect"
-                  >Politique de confidentialité</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-light text-decoration-none hover-effect"
-                  >Termes et conditions</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-light text-decoration-none hover-effect"
-                  >FAQ</a
-                >
-              </li>
-              <li class="mb-2">
-                <a href="#" class="text-light text-decoration-none hover-effect"
-                  >Contact</a
-                >
-              </li>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#features">Fonctionnalités</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#benefits">Avantages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#pricing">Tarifs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#testimonials">Témoignages</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a
+                            class="nav-link btn btn-primary text-white ms-2"
+                            href="{% url 'sign_up' %}"
+                    >Essai gratuit</a
+                    >
+                </li>
             </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase mb-4">Newsletter</h5>
-            <p class="mb-3">
-              Restez informé de nos dernières nouveautés et offres.
-            </p>
-            <form class="mb-3">
-              <div class="input-group">
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="Votre email"
-                  aria-label="Votre email"
-                  required
-                />
-                <button class="btn btn-outline-light" type="submit">
-                  S'abonner
-                </button>
-              </div>
-            </form>
-          </div>
         </div>
-      </div>
+    </div>
+</nav>
+{% if messages %}
+<div id="message-container"
+     style="position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 1050; width: 80%; max-width: 600px;">
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show"
+         role="alert">
+        <strong>
+            {% if message.tags == 'success' %}
+            <i class="fas fa-check-circle"></i> Succès!
+            {% elif message.tags == 'danger' %}
+            <i class="fas fa-exclamation-circle"></i> Erreur!
+            {% elif message.tags == 'warning' %}
+            <i class="fas fa-exclamation-triangle"></i> Attention!
+            {% elif message.tags == 'info' %}
+            <i class="fas fa-info-circle"></i> Information!
+            {% endif %}
+        </strong>
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+{% block content %}{% endblock %}
+<footer class="footer text-light py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">EasyPay</h5>
+                <p class="mb-4">
+                    Simplifiez et automatisez votre gestion de paie avec EasyPay.
+                    Gagnez du temps et évitez les erreurs.
+                </p>
+                <div class="mt-4">
+                    <a
+                            href="#"
+                            class="btn btn-outline-light btn-floating me-2"
+                            aria-label="Facebook"
+                    >
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a
+                            href="#"
+                            class="btn btn-outline-light btn-floating me-2"
+                            aria-label="Twitter"
+                    >
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a
+                            href="#"
+                            class="btn btn-outline-light btn-floating me-2"
+                            aria-label="LinkedIn"
+                    >
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
 
-      <div
-        class="text-center py-3 mt-4"
-        style="background-color: rgba(0, 0, 0, 0.2)"
-      >
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">Liens utiles</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">
+                        <a href="#" class="text-light text-decoration-none hover-effect"
+                        >Politique de confidentialité</a
+                        >
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-light text-decoration-none hover-effect"
+                        >Termes et conditions</a
+                        >
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-light text-decoration-none hover-effect"
+                        >FAQ</a
+                        >
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-light text-decoration-none hover-effect"
+                        >Contact</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                <h5 class="text-uppercase mb-4">Newsletter</h5>
+                <p class="mb-3">
+                    Restez informé de nos dernières nouveautés et offres.
+                </p>
+                <form class="mb-3">
+                    <div class="input-group">
+                        <input
+                                type="email"
+                                class="form-control"
+                                placeholder="Votre email"
+                                aria-label="Votre email"
+                                required
+                        />
+                        <button class="btn btn-outline-light" type="submit">
+                            S'abonner
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div
+            class="text-center py-3 mt-4"
+            style="background-color: rgba(0, 0, 0, 0.2)"
+    >
         <p class="mb-0">&copy; 2024 EasyPay. Tous droits réservés.</p>
-      </div>
-    </footer>
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    {% block extra_script %} {% endblock %}
-  </body>
+    </div>
+</footer>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/landing.js' %}"></script>
+{% block extra_script %}{% endblock %}
+</body>
 </html>

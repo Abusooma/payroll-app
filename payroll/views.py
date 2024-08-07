@@ -1,12 +1,12 @@
 from .forms import CompanyRegistrationForm
+from .forms import CustomUserLoginForm
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.http import urlsafe_base64_decode
 from django.utils.encoding import force_str
 from .utils import send_validation_email
 from django.contrib import messages
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model, login
 
 
 def activate(request, uidb64, token):
@@ -23,7 +23,7 @@ def activate(request, uidb64, token):
         return redirect('sign_in')
     else:
         messages.error(request, 'Le lien de confirmation est invalide ou a expiré.')
-        return redirect('home')
+        return redirect('home_landing')
 
 
 def home_landing(request):
@@ -35,8 +35,8 @@ def register_view(request):
         form = CompanyRegistrationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            send_validation_email(request, user)  # Correction de l'ordre des arguments
-            return redirect('confirmation_email')  # Ajout du return
+            send_validation_email(request, user)
+            return redirect('confirmation_email')
         else:
             messages.error(request, 'Une erreur est survenue')
     else:
@@ -45,7 +45,24 @@ def register_view(request):
 
 
 def login_view(request):
-    return render(request, 'payroll/accounts/login.html')
+    if request.method == 'POST':
+        form = CustomUserLoginForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request, user)
+            if form.cleaned_data.get('remember_me'):
+                request.session.set_expiry(1209600)  # 2 weeks
+            else:
+                request.session.set_expiry(0)  # Session expires when browser closes
+
+            messages.success(request, 'Connexion reussie ...!')
+
+            return redirect('home-dashboard')
+        else:
+            messages.error(request, 'Email ou mot de passe incorrect.')
+    else:
+        form = CustomUserLoginForm()
+    return render(request, 'payroll/accounts/login.html', {'form': form})
 
 
 def sign_up_completion_view(request):
@@ -70,3 +87,33 @@ def edit_profile_view(request):
 
 def confirmation_by_email_view(request):
     return render(request, 'payroll/accounts/confirmation_email.html')
+
+
+"""
+from django.contrib.auth import login
+from django.shortcuts import render, redirect
+from .forms import CustomLoginForm
+
+def login_view(request):
+    if request.method == 'POST':
+        form = CustomLoginForm(request, data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            if user is not None:
+                login(request, user)
+                
+                # Gestion de l'option "Se souvenir de moi"
+                if form.cleaned_data.get('remember_me'):
+                    # La session expirera lorsque le navigateur sera fermé
+                    request.session.set_expiry(0)
+                else:
+                    # Définir une durée d'expiration de session personnalisée (par exemple, 2 semaines)
+                    two_weeks = 14 * 24 * 60 * 60  # 14 jours en secondes
+                    request.session.set_expiry(two_weeks)
+                
+                return redirect('home')  # Rediriger vers la page d'accueil après la connexion
+    else:
+        form = CustomLoginForm()
+    return render(request, 'login.html', {'form': form})
+
+"""
